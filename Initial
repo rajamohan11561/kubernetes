@@ -1,9 +1,12 @@
 Kubernetes is easy to learn
 Docker does not support some Enterprise level supports
-Load Balancer
-Auto scaling
-Firewall
-Auto healing
-API Gateway
-Whitelis , Black list
+  Load Balancer
+  Auto scaling
+  Firewall
+  Auto healing
+  API Gateway
+  Whitelis , Black list
 
+* Docker working on Single host , docker need Dockershim -> containerrun time
+- container runtime is need to run containers on docker platform 
+- Even kubernetes also need container runtimes it supports ( cri-o , containerd , docker engine , kata containers , gVisor)
