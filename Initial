@@ -10,3 +10,62 @@ Docker does not support some Enterprise level supports
 * Docker working on Single host , docker need Dockershim -> containerrun time
 - container runtime is need to run containers on docker platform 
 - Even kubernetes also need container runtimes it supports ( cri-o , containerd , docker engine , kata containers , gVisor)
+
+Minikube installation
+    1  docker ps  - sudo checking
+    2  cat /etc/group | grep docker - group checking
+    3  sudo apt install -y curl wget apt-transport-https conntrack
+    4  sudo systemctl enable --now docker
+    5  sudo apt update
+    6  sudo apt search docker
+    7  sudo apt install -y docker.io
+    8  ls
+    9  clear
+   10  docker version
+   11  cat /etc/group/ | grep docker
+   12  cat /etc/group | grep docker
+   13  ls -l /var/run/docker.sock
+   14  sudo usermod -aG docker $USER
+   15  newgrp docker
+   16  docker version
+   17  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+   18  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+   19  minikube version
+   20  minikube start --driver=docker
+   21  minikube kubectl -- get pods -A  - without kubectl install this command will work
+   22  minikube status
+   23  kubectl get nodes
+   24  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   25  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+   26  kubectl version --client
+   27  kubectl get nodes
+   28  minikube dashboard
+   29  history
+   30  kubectl get pods
+   31  kubectl get pod -o wide - for breif list
+   32  kubectl get nodes
+kubectl describe pod podname
+kubectl logs podname 
+kubectl logs podname -c containername
+
+To enter container
+kubectl exec -it podname -- /bin/bash
+
+
+
+sample   - vim pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+
+Ip address are allocating for pods not for containers
+
+kubectl are  commandline (clis)
+minikube, kind, k3s, kops these are tools for creating kubernetes cluster
